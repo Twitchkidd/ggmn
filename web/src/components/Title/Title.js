@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { dark, light } from '../../utils/colors';
+import { dark, light } from 'src/utils/colors';
 
 /*
  *
@@ -11,14 +11,16 @@ import { dark, light } from '../../utils/colors';
  */
 
 const splashAnim = keyframes`
-  0% { transform: translateZ(1600px); }
-  100% { transform: translateZ(0px); }
+  from { transform: translateZ(1200px); }
+  50% { transform: translateZ(0px) translateX(0px) translateY(0px); }
+  to { transform: translateX(-45%) translateY(-110%) scale(0.25); }
 `;
 
 const Wrapper = styled.div`
 	display: grid;
 	place-items: center;
 
+  position: absolute;
 	min-width: 80vw;
 	max-width: 100vw;
 	aspect-ratio: 3 / 1;
@@ -27,8 +29,12 @@ const Wrapper = styled.div`
 	color: ${dark};
 	text-align: center;
 
-	animation: ${splashAnim} 2s 1;
+	animation: ${splashAnim} 2s forwards;
 	border-radius: 2rem;
+
+  h1 {
+    font-size: 6rem;
+  }
 `;
 
 const Title = () => (

@@ -1,7 +1,10 @@
-import { Link, routes } from '@redwoodjs/router';
+// import { Link, routes } from '@redwoodjs/router';
 import { MetaTags } from '@redwoodjs/web';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+// import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Board from 'src/components/Board'
+import Main from 'src/components/Main'
 import Title from 'src/components/Title'
 
 const initialBoard = [
@@ -89,8 +92,10 @@ const HomePage = () => {
         /* you should un-comment description and add a unique description, 155 characters or less
       You can look at this documentation for best practices : https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets */
       />
-      <Title />
-      {/* <h1>Backgammon</h1>
+      <Main>
+        <Title />
+        <Board />
+      </Main>
       <p>Player 1: {playerOne} | Points: {points[0]}</p>
       <p>Player 2: {playerTwo} | Points: {points[1]}</p>
       <ul>
@@ -102,7 +107,7 @@ const HomePage = () => {
           })
         }
         <li>Bar: 0</li>
-      </ul> */}
+      </ul>
     </>
   );
 };
