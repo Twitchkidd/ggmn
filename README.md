@@ -15,4 +15,4 @@ A quick paraphrase of the rules of backgammon as I understand them:
 - If you get doubles, you (aside: this is totally where Chaos Backgammon should come in, every once and a while with double rolls and every time with doubling the bet, it should spin the Wheel of Havoc!) get four moves of that value.
 - You can only take chips off the board with exact rolls (or higher if other options exhausted), and only when all of your pieces are in your home board.
 - If you can get all your pieces off before your opponent can get even one off, it's a 'gammon' and the points are doubled, and if they still have a piece on the bar, it's a 'backgammon' and points are tripled!
-- Initially, either player can offer to double the bet with the doubling cube, which can either be refused and defeat accepted, or taken, and then it's in that player's control to double again or not.
+- Initially, either player can offer to double the bet with the doubling cube (any time before the dice are rolled), which can either be refused and defeat accepted, or taken, and then it's in that player's control to double again or not.
