@@ -8,6 +8,7 @@ const SubBoard = styled.div`
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 1fr;
   grid-auto-flow: column;
+  /* gap: 8px; */
 
   grid-column: ${props => props.quadrant === "topLeft" || props.quadrant === "bottomLeft" ? '1 / 2' : '2 / 3'};
   grid-row: ${props => props.quadrant === "topLeft" || props.quadrant === "topRight" ? '1 / 2' : '3 / 4'};

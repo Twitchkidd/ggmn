@@ -1,12 +1,11 @@
 // import { Link, routes } from '@redwoodjs/router';
 import { MetaTags } from '@redwoodjs/web';
-import { useState } from 'react';
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Board from 'src/components/Board'
-import Main from 'src/components/Main'
-import Title from 'src/components/Title'
-import AnimationToggle from 'src/components/AnimationToggle'
+import Board from 'src/components/Board';
+import Main from 'src/components/Main';
+import Title from 'src/components/Title';
+import AnimationToggle from 'src/components/AnimationToggle';
 
 const initialBoard = [
   [
@@ -65,18 +64,18 @@ const initialBoard = [
     0, // 24
     0, // Out
   ],
-]
+];
 
 const Chip = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
   display: inline-block;
-  background: ${props => props.color};
+  background: ${(props) => props.color};
 `;
 
 const HomePage = () => {
-  const [animations, setAnimations] = useState(true);
+  const [animations, setAnimations] = useState('unloaded');
   const [playerOne, setPlayerOne] = useState('Alice');
   const [playerTwo, setPlayerTwo] = useState('Daphne');
   const [colors, setColors] = useState(['white', 'red']);
@@ -84,11 +83,21 @@ const HomePage = () => {
   const [roll, setRoll] = useState([0, 0]);
   const [turn, setTurn] = useState(0);
   const [points, setPoints] = useState([0, 0]);
-  const range = n => [...Array(n).keys()].map(n => n + 1);
+  const range = (n) => [...Array(n).keys()].map((n) => n + 1);
   const spaces = range(24);
   const handleAnimationsToggle = () => {
     setAnimations(!animations);
-  }
+  };
+  useEffect(() => {
+    if (localStorage.getItem('anim') === null) {
+      localStorage.setItem('anim', `true`);
+      setAnimations('true');
+    } else if (animations === 'unloaded') {
+      setAnimations(localStorage.getItem('anim') === 'true');
+    } else if (localStorage.getItem('anim') !== animations) {
+      localStorage.setItem('anim', `${animations}`);
+    }
+  }, [animations])
   return (
     <>
       <MetaTags
@@ -98,9 +107,9 @@ const HomePage = () => {
       You can look at this documentation for best practices : https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets */
       />
       <Main>
-        <Title anim={animations}/>
-        <Board anim={animations}/>
-        {/* <Animation anim={animations} setAnim={handleAnimationsToggle} /> */}
+        <Title anim={animations} />
+        <Board anim={animations} />
+        <AnimationToggle anim={animations} setAnim={handleAnimationsToggle} />
       </Main>
       {/* <p>Player 1: {playerOne} | Points: {points[0]}</p>
       <p>Player 2: {playerTwo} | Points: {points[1]}</p>

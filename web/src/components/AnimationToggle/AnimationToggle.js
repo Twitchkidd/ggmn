@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 const AnimationToggle = ({anim, setAnim}) => (
   <Wrapper>
     <span style={{color: "#fefefe"}}>Animations</span>
-    <input type='checkbox' name='animations' value={anim} onClick={setAnim}/>
+    <input type='checkbox' name='animations' checked={anim} value='animation' onChange={setAnim}/>
   </Wrapper>
 )
 
