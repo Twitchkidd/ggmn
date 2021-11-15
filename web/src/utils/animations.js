@@ -8,7 +8,7 @@ export const title = keyframes`
   25% { transform: translateZ(0px); }
   50% { transform: translateZ(0px); opacity: 1 ; }
   74% { transform: translateZ(-36000px); opacity: 0; }
-  75% { transform: translateZ(600px) translateX(90%) translateY(350%); opacity: 0; }
+  75% { transform: translateZ(600px) translateX(45%) translateY(110%); opacity: 0; }
   76% { opacity: 1; }
   to { transform: translateZ(0px) translateX(-45%) translateY(-110%) scale(0.25); }
 `;
@@ -24,6 +24,6 @@ export const chaos = keyframes`
 // * Please drop in for 2s after 7-8s
 export const board = keyframes`
   from { transform: translateZ(1200px); }
-  65% { transform: translateZ(1200px); }
-  to { transform: translateZ(0px); }
+  80% { transform: translateZ(1200px) translateX(0); }
+  to { transform: translateZ(0px) translateX(5vw); }
 `;

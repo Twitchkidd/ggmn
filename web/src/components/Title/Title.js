@@ -38,8 +38,8 @@ const Wrapper = styled.div`
     content: 'Chaos';
     position: absolute;
     display: block;
-    left: -40px;
-    top: -20px;
+    left: -36px;
+    top: -16px;
     color: ${darkRed};
     font-size: 8rem;
     opacity: 0;
