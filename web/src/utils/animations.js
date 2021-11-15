@@ -16,7 +16,7 @@ export const title = keyframes`
 export const chaos = keyframes`
   from { transform: translateZ(4200px) rotate(-12deg); opacity: 0; }
   33% { transform: translateZ(4200px) rotate(-12deg); opacity: 0; }
-  40% { transform: translateZ(4200px) rotate(-12deg); opacity: 1; }
+  40% { transform: translateZ(4200px) rotate(-12deg); opacity: 0; }
   to { transform: translateZ(0px) rotate(-12deg); opacity: 1;}
 `;
 // Huh, so that's interesting, it might just be that I need a separate element for this effect.

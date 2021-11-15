@@ -61,16 +61,18 @@ const Board = styled.div`
   background: ${brown};
   border: 20px solid ${darkBrown};
 
-  /* animation: ${board} 8s forwards; */
-  animation: ${board} 0s forwards;
+  animation-name: ${board};
+  animation-direction: forwards;
+  animation-fill-mode: forwards;
+  animation-duration: ${props => props.anim ? '8s' : '0s'};
 
   border-radius: 8px;
 `;
 
-const BoardComponent = () => {
+const BoardComponent = ({anim}) => {
   // Just needs chips ...
   return (
-    <Board>
+    <Board anim={anim}>
       <SubBoard quadrant={"topLeft"}>
         <Point />
         <Point />

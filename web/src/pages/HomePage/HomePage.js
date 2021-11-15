@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Board from 'src/components/Board'
 import Main from 'src/components/Main'
 import Title from 'src/components/Title'
+import AnimationToggle from 'src/components/AnimationToggle'
 
 const initialBoard = [
   [
@@ -75,6 +76,7 @@ const Chip = styled.div`
 `;
 
 const HomePage = () => {
+  const [animations, setAnimations] = useState(true);
   const [playerOne, setPlayerOne] = useState('Alice');
   const [playerTwo, setPlayerTwo] = useState('Daphne');
   const [colors, setColors] = useState(['white', 'red']);
@@ -84,6 +86,9 @@ const HomePage = () => {
   const [points, setPoints] = useState([0, 0]);
   const range = n => [...Array(n).keys()].map(n => n + 1);
   const spaces = range(24);
+  const handleAnimationsToggle = () => {
+    setAnimations(!animations);
+  }
   return (
     <>
       <MetaTags
@@ -93,8 +98,9 @@ const HomePage = () => {
       You can look at this documentation for best practices : https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets */
       />
       <Main>
-        <Title />
-        <Board />
+        <Title anim={animations}/>
+        <Board anim={animations}/>
+        {/* <Animation anim={animations} setAnim={handleAnimationsToggle} /> */}
       </Main>
       {/* <p>Player 1: {playerOne} | Points: {points[0]}</p>
       <p>Player 2: {playerTwo} | Points: {points[1]}</p>

@@ -9,7 +9,6 @@ import { dark, light, darkRed } from 'src/utils/colors';
  *
  */
 
-
 const Wrapper = styled.div`
 	display: grid;
 	place-items: center;
@@ -25,8 +24,7 @@ const Wrapper = styled.div`
 	text-align: center;
 
 	animation-name: ${title};
-  /* animation-duration: 7s; */
-  animation-duration: 0s;
+  animation-duration: ${props => props.anim ? '7s' : '0s' };
   animation-direction: forwards;
   animation-fill-mode: forwards;
 	border-radius: 2rem;
@@ -44,13 +42,15 @@ const Wrapper = styled.div`
     color: ${darkRed};
     font-size: 8rem;
     opacity: 0;
-    /* animation: ${chaos} 3s forwards; */
-    animation: ${chaos} 0s forwards;
+    animation-name: ${chaos};
+    animation-direction: forwards;
+    animation-fill-mode: forwards;
+    animation-duration: ${props => props.anim ? '3s' : '0s'};
   }
 `;
 
-const Title = () => (
-	<Wrapper>
+const Title = ({anim}) => (
+	<Wrapper anim={anim}>
 		<h1>Backgammon!</h1>
 	</Wrapper>
 );
