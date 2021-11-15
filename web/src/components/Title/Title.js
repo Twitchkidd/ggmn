@@ -1,26 +1,21 @@
-import styled, { keyframes } from 'styled-components';
-import { dark, light } from 'src/utils/colors';
+import styled from 'styled-components';
+import { title, chaos } from 'src/utils/animations';
+import { dark, light, darkRed } from 'src/utils/colors';
 
 /*
  *
  * The animation can start taking into account that it's a child element of a
  * parent with perspecive set.
  *
- * The title should drop through the back of the screen and arresto momentum.
- *
  */
 
-const splashAnim = keyframes`
-  from { transform: translateZ(1200px); }
-  50% { transform: translateZ(0px) translateX(0px) translateY(0px); }
-  to { transform: translateX(-45%) translateY(-110%) scale(0.25); }
-`;
 
 const Wrapper = styled.div`
 	display: grid;
 	place-items: center;
 
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
 	min-width: 80vw;
 	max-width: 100vw;
 	aspect-ratio: 3 / 1;
@@ -29,11 +24,26 @@ const Wrapper = styled.div`
 	color: ${dark};
 	text-align: center;
 
-	animation: ${splashAnim} 2s forwards;
+	animation-name: ${title};
+  animation-duration: 7s;
+  animation-direction: forwards;
+  animation-fill-mode: forwards;
 	border-radius: 2rem;
 
   h1 {
     font-size: 6rem;
+  }
+
+  h1::before {
+    content: 'Chaos';
+    position: absolute;
+    display: block;
+    left: -40px;
+    top: -20px;
+    color: ${darkRed};
+    font-size: 8rem;
+    opacity: 0;
+    animation: ${chaos} 3s forwards;
   }
 `;
 

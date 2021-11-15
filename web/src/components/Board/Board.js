@@ -1,11 +1,6 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+import { board } from 'src/utils/animations';
 import { darkBrown, brown } from 'src/utils/colors';
-
-const dropInAnim = keyframes`
-  from { transform: translateZ(1200px); }
-  50% { transform: translateZ(1200px); }
-  to { transform: translateZ(0px); }
-`;
 
 const Board = styled.div`
   min-width: 80vw;
@@ -14,9 +9,7 @@ const Board = styled.div`
   background: ${brown};
   border: 20px solid ${darkBrown};
   border-radius: 8px;
-  animation-name: ${dropInAnim};
-  animation-duration: 3s;
-  animation-direction: forwards;
+  animation: ${board} 9s forwards;
 `;
 
 export default Board;

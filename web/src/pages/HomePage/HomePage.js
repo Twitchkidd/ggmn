@@ -96,7 +96,7 @@ const HomePage = () => {
         <Title />
         <Board />
       </Main>
-      <p>Player 1: {playerOne} | Points: {points[0]}</p>
+      {/* <p>Player 1: {playerOne} | Points: {points[0]}</p>
       <p>Player 2: {playerTwo} | Points: {points[1]}</p>
       <ul>
         {
@@ -107,7 +107,7 @@ const HomePage = () => {
           })
         }
         <li>Bar: 0</li>
-      </ul>
+      </ul> */}
     </>
   );
 };
