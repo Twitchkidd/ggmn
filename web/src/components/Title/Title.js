@@ -25,7 +25,8 @@ const Wrapper = styled.div`
 	text-align: center;
 
 	animation-name: ${title};
-  animation-duration: 7s;
+  /* animation-duration: 7s; */
+  animation-duration: 0s;
   animation-direction: forwards;
   animation-fill-mode: forwards;
 	border-radius: 2rem;
@@ -43,7 +44,8 @@ const Wrapper = styled.div`
     color: ${darkRed};
     font-size: 8rem;
     opacity: 0;
-    animation: ${chaos} 3s forwards;
+    /* animation: ${chaos} 3s forwards; */
+    animation: ${chaos} 0s forwards;
   }
 `;
 

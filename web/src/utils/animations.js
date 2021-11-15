@@ -10,7 +10,7 @@ export const title = keyframes`
   74% { transform: translateZ(-36000px); opacity: 0; }
   75% { transform: translateZ(600px) translateX(45%) translateY(110%); opacity: 0; }
   76% { opacity: 1; }
-  to { transform: translateZ(0px) translateX(-45%) translateY(-110%) scale(0.25); }
+  to { transform: translateZ(0px) translateX(-45%) translateY(-115%) scale(0.25); }
 `;
 
 export const chaos = keyframes`
