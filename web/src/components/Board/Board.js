@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { board } from 'src/utils/animations';
-// import { darkBrown, brown, lightBlue, blue, darkBlue, ocean } from 'src/utils/colors';
 import { darkBrown, brown, lightBrown, veryLightBrown, tan } from 'src/utils/colors';
 
 const SubBoard = styled.div`
@@ -18,7 +17,6 @@ const SubBoard = styled.div`
   ${props => props.quadrant === "topLeft" || props.quadrant === "topRight" ? `border-top: 20px solid ${brown};` : `border-bottom: 20px solid ${brown};`}
   background: ${lightBrown};
   `;
-  // background: ${props => props.quadrant === "topLeft" ? lightBlue : props.quadrant === "topRight" ? blue : props.quadrant === "bottomLeft" ? darkBlue : ocean};
 
 const Between = styled.div`
   grid-column: ${props => props.side === 'left' ? '1 / 2' : '2 / 3'};
@@ -29,15 +27,37 @@ const Between = styled.div`
   background: ${lightBrown};
 `;
 
+const PointWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-end;
+
+position: relative;
+
+padding-bottom: 1px;
+
+${props => props.bottom ? null : `transform: rotate(180deg);`}
+`;
+
 const Point = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  &:nth-child(2n) {
-    background: ${tan};
-  }
-  &:nth-child(2n+1) {
-    background: ${veryLightBrown};
-  }
-  ${props => props.bottom ? null : `transform: rotate(180deg);`}
+  background: ${props => props.even ? tan : veryLightBrown};
+  z-index: 2;
+`;
+
+const Chip = styled.div`
+  width: 3.8vw;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: inline-block;
+  background: ${(props) => props.color};
+  z-index: 3;
 `;
 
 const EndBox = styled.div`
@@ -70,42 +90,27 @@ const Board = styled.div`
   border-radius: 8px;
 `;
 
-const BoardComponent = ({anim}) => {
-  // Just needs chips ...
+const BoardComponent = ({anim, board, colors}) => {
+  const quadrants = ["bottomRight","bottomLeft","topLeft","topRight"];
+  const range6 = [...Array(6).keys()].map(n=>n+1);
   return (
     <Board anim={anim}>
-      <SubBoard quadrant={"topLeft"}>
-        <Point />
-        <Point />
-        <Point />
-        <Point />
-        <Point />
-        <Point />
-      </SubBoard>
-      <SubBoard quadrant={"topRight"}>
-        <Point />
-        <Point />
-        <Point />
-        <Point />
-        <Point />
-        <Point />
-      </SubBoard>
-      <SubBoard quadrant={"bottomLeft"}>
-        <Point bottom />
-        <Point bottom />
-        <Point bottom />
-        <Point bottom />
-        <Point bottom />
-        <Point bottom />
-      </SubBoard>
-      <SubBoard quadrant={"bottomRight"}>
-        <Point bottom />
-        <Point bottom />
-        <Point bottom />
-        <Point bottom />
-        <Point bottom />
-        <Point bottom />
-      </SubBoard>
+      {quadrants.map((q, i) => (
+        <SubBoard key={q} quadrant={q}>{range6.map((n) => (
+              <PointWrapper key={i <= 1 ? ((i + 1) * 6) - n + 1 : (i * 6) + n} bottom={i <= 1}><Point even={n % 2 === 0} />{(() => {
+                const w = board[0][i <= 1 ? ((i + 1) * 6) - n + 1 : (i * 6) + n];
+                const r = board[1][i <= 1 ? ((i + 1) * 6) - n + 1 : (i * 6) + n];
+                if (w) {
+                  return Array(w).fill().map((x, i) => <Chip key={i} color={colors[0]} />)
+                } else if (r) {
+                  return Array(r).fill().map((x, i) => <Chip key={i} color={colors[1]} />)
+                } else {
+                  return null;
+                }
+              })()}</PointWrapper>
+            ))
+          }</SubBoard>
+      ))}
       <Between side={"left"} />
       <Between side={"right"} />
       <EndBox top />

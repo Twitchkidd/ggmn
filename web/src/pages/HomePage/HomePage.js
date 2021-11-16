@@ -6,6 +6,7 @@ import Board from 'src/components/Board';
 import Main from 'src/components/Main';
 import Title from 'src/components/Title';
 import AnimationToggle from 'src/components/AnimationToggle';
+import { maroon, light } from 'src/utils/colors';
 
 const initialBoard = [
   [
@@ -66,19 +67,11 @@ const initialBoard = [
   ],
 ];
 
-const Chip = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: inline-block;
-  background: ${(props) => props.color};
-`;
-
 const HomePage = () => {
   const [animations, setAnimations] = useState('unloaded');
   const [playerOne, setPlayerOne] = useState('Alice');
   const [playerTwo, setPlayerTwo] = useState('Daphne');
-  const [colors, setColors] = useState(['white', 'red']);
+  const [colors, setColors] = useState([light, maroon]);
   const [board, setBoard] = useState(initialBoard);
   const [roll, setRoll] = useState([0, 0]);
   const [turn, setTurn] = useState(0);
@@ -108,7 +101,7 @@ const HomePage = () => {
       />
       <Main>
         <Title anim={animations} />
-        <Board anim={animations} />
+        <Board anim={animations} board={board} colors={colors} />
         <AnimationToggle anim={animations} setAnim={handleAnimationsToggle} />
       </Main>
       {/* <p>Player 1: {playerOne} | Points: {points[0]}</p>

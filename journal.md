@@ -21,3 +21,5 @@ Touchscreen users: above a certain size, it's probably fine to have it work like
 I guess with a valid space selected, clicking on the dice or tabbing to the dice and pressing enter should also make the move, for continuity, and why not.
 
 Oh, you don't need to have a 'double' button, just make the doubling cube on the board the button.
+
+2021-11-16 Oh boy! I've got a meeting tomorrow morning about a freelance web dev gig! Let's bust this thing out and be ready to move on!
